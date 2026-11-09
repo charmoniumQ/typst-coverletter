@@ -129,6 +129,7 @@
 #let resolve-letter-config(
   font-type: none,
   margin: none,
+  image: none,
   name: none,
   address: none,
   contacts: (),
@@ -195,6 +196,7 @@
       default: d.font,
     ),
     margin: resolved-margin,
+    image: _option(profile, "image", image),
     name: _option(profile, "name", name),
     role: _option-any(profile, ("role", "headline", "position"), none),
     address: _option(profile, "address", address),
@@ -377,6 +379,9 @@
   set par(spacing: 0pt, first-line-indent: 0em)
 
   let identity = (
+    if is-filled(cfg.image) {
+      align(cfg.name-align, cfg.image)
+    },
     if is-filled(cfg.name) {
       align(cfg.name-align, text(cfg.name-size, fill: cfg.heading, weight: cfg.name-weight)[#cfg.name])
     },
@@ -563,6 +568,7 @@
   closing: none,
   font-type: none,
   margin: none,
+  image: none,
   name: none,
   address: none,
   contacts: (),
@@ -604,6 +610,7 @@
   let cfg = resolve-letter-config(
     font-type: font-type,
     margin: margin,
+    image: image,
     name: name,
     address: address,
     contacts: contacts,
@@ -687,6 +694,7 @@
   supplement: none,
   font-type: none,
   margin: none,
+  image: none,
   name: none,
   address: none,
   contacts: (),
@@ -728,6 +736,7 @@
   let cfg = resolve-letter-config(
     font-type: font-type,
     margin: margin,
+    image: image,
     name: name,
     address: address,
     contacts: contacts,
